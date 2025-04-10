@@ -1,5 +1,5 @@
 import {GeocodingResponse, WeatherData} from "@/api/type.ts";
-import {Card, CardContent, CardFooter} from "@/components/ui/card.tsx";
+import {Card, CardContent} from "@/components/ui/card.tsx";
 import {ArrowDown, ArrowUp, Droplets, Wind} from "lucide-react";
 
 interface CurrentWeatherProps {
