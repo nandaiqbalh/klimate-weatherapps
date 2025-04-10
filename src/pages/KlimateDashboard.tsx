@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button.tsx";
-import {AlertCircle, AlertTriangle, MapPin, RefreshCw} from "lucide-react";
+import {AlertTriangle, MapPin, RefreshCw} from "lucide-react";
 import {useGeolocation} from "@/hooks/UseGeolocation.tsx";
 import LoadingSkeleton from "@/components/LoadingSkeleton.tsx";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";

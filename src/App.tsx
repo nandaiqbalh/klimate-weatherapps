@@ -9,6 +9,7 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 
 // Create a client
+// @ts-ignore
 const queryClient = new QueryClient({
     defaultOptions: {
         staleTime: 5 * 60 * 1000,
