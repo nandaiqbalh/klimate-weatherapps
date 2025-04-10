@@ -9,9 +9,17 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        staleTime: 5 * 60 * 1000,
+        gcTime: 10 * 60 * 1000,
+        retry: false,
+        resetOnWindowFocus: true
+    }
+});
 
 function App() {
+
 
     return (
         <>
