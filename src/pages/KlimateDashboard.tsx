@@ -6,6 +6,7 @@ import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {useForecastQuery, useReverseGeocodeQuery, useWeatherQuery} from "@/hooks/UseWeather.tsx";
 import CurrentWeather from "@/components/CurrentWeather.tsx";
 import HourlyTemperature from "@/components/HourlyTemperature.tsx";
+import WeatherDetails from "@/components/WeatherDetails";
 
 const KlimateDashboard = () => {
     const {coordinates, error: locationError, isLoading: locationLoading, getLocation} = useGeolocation();
@@ -116,6 +117,7 @@ const KlimateDashboard = () => {
 
                 <div>
                     {/*detail*/}
+                    <WeatherDetails data={weatherQuery.data} />
                     {/*forecast*/}
                 </div>
             </div>
