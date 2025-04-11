@@ -5,6 +5,7 @@ import LoadingSkeleton from "@/components/LoadingSkeleton.tsx";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {useForecastQuery, useReverseGeocodeQuery, useWeatherQuery} from "@/hooks/UseWeather.tsx";
 import CurrentWeather from "@/components/CurrentWeather.tsx";
+import HourlyTemperature from "@/components/HourlyTemperature.tsx";
 
 const KlimateDashboard = () => {
     const {coordinates, error: locationError, isLoading: locationLoading, getLocation} = useGeolocation();
@@ -105,11 +106,12 @@ const KlimateDashboard = () => {
             </div>
 
             <div className={`grid gap-6`}>
-                <div>
+                <div className={`flex flex-col xl:flex-row gap-4`}>
                     {/*current weather*/}
-                    <CurrentWeather data={weatherQuery.data} locationName={locationName}/>
+                    <CurrentWeather data={weatherQuery.data} locationName={locationName} />
 
                     {/*hourly temperature*/}
+                    <HourlyTemperature data={forecastQuery.data} />
                 </div>
 
                 <div>
