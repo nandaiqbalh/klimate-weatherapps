@@ -7,6 +7,7 @@ import {useForecastQuery, useReverseGeocodeQuery, useWeatherQuery} from "@/hooks
 import CurrentWeather from "@/components/CurrentWeather.tsx";
 import HourlyTemperature from "@/components/HourlyTemperature.tsx";
 import WeatherDetails from "@/components/WeatherDetails";
+import WeatherForecast from "@/components/WeatherForecast";
 
 const KlimateDashboard = () => {
     const {coordinates, error: locationError, isLoading: locationLoading, getLocation} = useGeolocation();
@@ -115,10 +116,16 @@ const KlimateDashboard = () => {
                     <HourlyTemperature data={forecastQuery.data} />
                 </div>
 
-                <div>
-                    {/*detail*/}
-                    <WeatherDetails data={weatherQuery.data} />
-                    {/*forecast*/}
+                <div className="grid gap-6 md:grid-cols-3 items-start">
+                    {/* detail (1 kolom) */}
+                    <div className="md:col-span-1">
+                        <WeatherDetails data={weatherQuery.data} />
+                    </div>
+
+                    {/* forecast (2 kolom) */}
+                    <div className="md:col-span-2">
+                        <WeatherForecast data={forecastQuery.data} />
+                    </div>
                 </div>
             </div>
         </div>
