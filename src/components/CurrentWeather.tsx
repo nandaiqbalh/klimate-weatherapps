@@ -36,15 +36,17 @@ const CurrentWeather = ({data, locationName}: CurrentWeatherProps) => {
 
                         {/*location label*/}
                         <div className={`space-y-2`}>
-                            <div className={`flex flex-col items-start gap-1`}>
-                                <h2 className={`text-2xl font-bold tracking-tighter`}>{locationName?.name},&nbsp; </h2>
-                                {locationName?.state && (
-                                    <span className={`text-muted-foreground`}>{locationName.state}</span>)}
-                            </div>
-
-                            <p className={`text-sm text-muted-foreground`}>
-                                {locationName?.country}
-                            </p>
+                            {locationName?.name && (
+                                <><div className={`flex flex-col items-start gap-1`}>
+                                    <h2 className={`text-2xl font-bold tracking-tighter`}>{locationName?.name},&nbsp; </h2>
+                                    {locationName?.state && (
+                                        <span className={`text-muted-foreground`}>{locationName.state}</span>)}
+                                </div><p className={`text-sm text-muted-foreground`}>
+                                        {locationName?.country}
+                                    </p></>
+                            )
+                        }
+                            
                         </div>
 
                         {/*main section*/}
