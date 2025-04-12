@@ -10,7 +10,7 @@ const Header = () => {
     return (
         <header
             className={`sticky top-0 w-full bg-background/90 border-b backdrop-blur py-2 supports-[backdrop-filter]:bg-background/6 z-50`}>
-            <div className={'container mx-auto flex h-16 items-center justify-between px-4'}>
+            <div className={'container mx-auto flex h-16 items-center justify-between px-4 pr-16 lg:pr-4'}>
                 <Link to={"/"}>
                     <img src={isDark ? "/logo.png" : "/logo2.png"} alt="Logo SunDrizzle" className={`h-14`} />
                 </Link>
