@@ -15,8 +15,8 @@ const Header = () => {
                     <img src={isDark ? "/logo.png" : "/logo2.png"} alt="Logo SunDrizzle" className={`h-14`} />
                 </Link>
 
-                <div className="flex items-center gap-4">
-                    {/*{search}*/}
+                <div className="flex items-center gap-4 md:pr-0 sm:pr-12">
+                {/*{search}*/}
                     <CitySearch />
 
                     <div className={`flex items-center cursor-pointer transition-transform duration-500 ${isDark ? "rotate-180" : "rotate-0"}`}>
