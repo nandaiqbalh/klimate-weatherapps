@@ -11,7 +11,7 @@ export interface WeatherCondition {
 }
 
 export interface WeatherData {
-    coords: Coordinates,
+    coord: Coordinates,
     weather: WeatherCondition[],
     main: {
         temp: number,

@@ -7,6 +7,7 @@ import CurrentWeather from "@/components/CurrentWeather";
 import HourlyTemperature from "@/components/HourlyTemperature";
 import WeatherDetails from "@/components/WeatherDetails";
 import WeatherForecast from "@/components/WeatherForecast";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const CityPages = () => {
 
@@ -22,6 +23,9 @@ const CityPages = () => {
     const forecastQuery = useForecastQuery(coordinates)
     const weatherQuery = useWeatherQuery(coordinates)
 
+    console.log("Current Weather:", weatherQuery.data)
+    console.log("Forecast:", forecastQuery.data)
+    
     if (weatherQuery.error || forecastQuery.error) {
         return <Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
@@ -37,14 +41,18 @@ const CityPages = () => {
         return <LoadingSkeleton/>;
     }
 
+    if (!weatherQuery.data) {
+        return null; // or handle the case where data is missing
+    }
+
     return (
         <div className={`space-y-4`}>
             {/*Favorite Cities*/}
             <div className={`flex items-center justify-between`}>
-                <h1 className={`text-3xl font-bold tracking-tight`}>{params.cityName}, {weatherQuery.data.sys.country}</h1>
+                <h1 className={`text-xl lg:text-3xl font-bold tracking-tight`}>{params.cityName}, {weatherQuery.data.sys.country}</h1>
                 
                 <div>
-                    
+                    <FavoriteButton data={{...weatherQuery.data, name:params.cityName}}  />
                 </div>
 
             </div>

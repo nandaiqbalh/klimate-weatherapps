@@ -8,6 +8,7 @@ import CurrentWeather from "@/components/CurrentWeather.tsx";
 import HourlyTemperature from "@/components/HourlyTemperature.tsx";
 import WeatherDetails from "@/components/WeatherDetails";
 import WeatherForecast from "@/components/WeatherForecast";
+import FavoriteCities from "@/components/FavoriteCities";
 
 const KlimateDashboard = () => {
     const {coordinates, error: locationError, isLoading: locationLoading, getLocation} = useGeolocation();
@@ -95,6 +96,9 @@ const KlimateDashboard = () => {
     return (
         <div className={`space-y-4`}>
             {/*Favorite Cities*/}
+
+            <FavoriteCities/>
+
             <div className={`flex items-center justify-between`}>
                 <h1 className={`text-xl font-bold tracking-tight`}>My Location</h1>
                 <Button
