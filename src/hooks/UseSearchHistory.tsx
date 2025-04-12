@@ -8,7 +8,6 @@ interface SearchHistoryItem {
     lon: number,
     name: string,
     country: string,
-    state: string,
     searchedAt?: number
 }
 
@@ -32,7 +31,6 @@ export function useSeachHistory() {
                     item.lat === search.lat &&
                     item.lon === search.lon &&
                     item.name === search.name &&
-                    item.state === search.state &&
                     item.country === search.country
             )
     

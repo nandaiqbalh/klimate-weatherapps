@@ -1,4 +1,4 @@
-import { isValidElement, useState } from "react"
+import { useState } from "react"
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "./ui/command"
 import { Button } from "./ui/button"
 import { Clock, Loader2, Search, Star, XCircle } from "lucide-react"
@@ -20,14 +20,13 @@ const CitySearch = () => {
 
     const handleSelect = (cityData: string) => {
 
-        const [lat, lon, name, state, country] = cityData.split("|")
+        const [lat, lon, name, country] = cityData.split("|")
 
         // add to history
         addToHistory.mutate({
             lat: parseFloat(lat),
             lon: parseFloat(lon),
             name: name,
-            state: state,
             country: country,
             query: query
         })
@@ -63,7 +62,7 @@ const CitySearch = () => {
                                     return (
                                         <CommandItem
                                             key={`${location.lat}-${location.lon}`}
-                                            value={`${location.lat}|${location.lon}|${location.name}|${location.state}|${location.country}`}
+                                            value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
                                             className="cursor-pointer"
                                             onAbort={() => setOpen(false)}
                                             onSelect={handleSelect}
@@ -104,7 +103,7 @@ const CitySearch = () => {
                                     return (
                                         <CommandItem
                                             key={`${location.lat}-${location.lon}`}
-                                            value={`${location.lat}|${location.lon}|${location.name}|${location.state}|${location.country}`}
+                                            value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
                                             className="cursor-pointer flex items-center justify-between"
                                             onAbort={() => setOpen(false)}
                                             onSelect={handleSelect}
@@ -113,9 +112,7 @@ const CitySearch = () => {
                                                 <Clock className="mr-2 h-4 w-4" />
                                                 <span>
                                                     {location.name}
-                                                    {isValidElement(location.state) && (
-                                                        <span className="text-sm text-muted-foreground">, {location.state}</span>
-                                                    )}
+                                    
                                                     <span className="text-sm text-muted-foreground">, {location.country}</span>
                                                 </span>
                                             </div>
