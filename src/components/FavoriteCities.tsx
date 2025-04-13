@@ -1,5 +1,5 @@
 import { useFavorite } from "@/hooks/UseFavorite"
-import { ScrollArea } from "./ui/scroll-area"
+import { ScrollArea, ScrollBar } from "./ui/scroll-area"
 import { useNavigate } from "react-router-dom"
 import { useWeatherQuery } from "@/hooks/UseWeather"
 import { Button } from "./ui/button"
@@ -23,12 +23,12 @@ const FavoriteCities = () => {
     }
 
     return (
-        <>
 
-            <h1 className="text-xl font-bold tracking-tight">Favorites</h1>
+        <div className="w-full">
+            <h1 className="text-xl font-bold tracking-tight pb-4" aria-orientation="horizontal">Favorites</h1>
 
-            <ScrollArea className="pb-4 w-full">
-                <div className="flex gap-4">
+            <ScrollArea className="pb-4 w-full overflow-x-auto">
+                <div className="flex gap-4 w-max">
                     {favorites.map((city) => (
                         <FavoriteCityTablet
                             key={city.id}
@@ -36,8 +36,11 @@ const FavoriteCities = () => {
                             onRemove={() => clearFavorite.mutate(city.id)} />
                     ))}
                 </div>
+                <ScrollBar orientation="horizontal" />
+
             </ScrollArea>
-        </>
+        </div >
+
     )
 }
 
@@ -70,7 +73,7 @@ function FavoriteCityTablet({ lat, lon, name, onRemove }: FavoriteCityTabletProp
                     <Loader2 className="h-4 w-4 animate-spin" />
                 </div>
             ) : weather ?
-                <>
+                <div className="flex flex-col md:flex-row items-center gap-2">
 
                     <div className="flex items-center gap-2">
                         <img
@@ -85,11 +88,11 @@ function FavoriteCityTablet({ lat, lon, name, onRemove }: FavoriteCityTabletProp
                         </div>
                     </div>
 
-                    <div className="ml-auto text-right mr-4">
+                    <div className="mr-auto md:ml-auto text-start md:text-right md:mr-4">
                         <p className="text-xl font-bold">{Math.round(weather.main.temp)/10}°</p>
                         <p className="text-xs capitalize text-muted-foreground">{weather.weather[0].description}</p>
                     </div>
-                </>
+                </div>
                 : null
             }
         </div>
